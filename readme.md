@@ -26,6 +26,6 @@ UD18 can communicate via Bluetooth and two applications can be downloaded, one f
 To use UD18 in **node-red** custom integrate projects we need:
 
 - the *communication protocol* used by the device (see **UD18_protocool.txt**)
-- **node-red** nodes to code+send cammands and receive+decode data (see **U18flow.json**).
+- **node-red** nodes to code+send commands and receive+decode data (see **UD18flow.json**).
 
-For the full story see **D18_01_en.pdf** (in italiano: **UD18_01_it.pdf**).
+For the full story see **UD18_01_en.pdf** (in italiano: **UD18_01_it.pdf**).
