@@ -17,7 +17,7 @@ Furthermore:
 - USB-data+: 0...2,99 V
 - USB-data-: 0...2.99 V
 
-UD18 as also the capability to cut off the charge (FCOP) when some trigger conditions are meets.
+UD18 as also the optional capability to cut off the charge (FCOP) when some trigger conditions are meets.
 
 UD18 can communicate via Bluetooth and two applications can be downloaded, one for PC and another App for smartphone. 
 
