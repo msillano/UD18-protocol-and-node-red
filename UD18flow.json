@@ -1,0 +1,479 @@
+[
+    {
+        "id": "6022cae4.9b3254",
+        "type": "tab",
+        "label": "UD18 flow",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "432edb6d.435fa4",
+        "type": "serial in",
+        "z": "6022cae4.9b3254",
+        "name": "RX UD18 TESTER",
+        "serial": "4092feda.8b16c",
+        "x": 110,
+        "y": 520,
+        "wires": [
+            [
+                "862fdaaf.6c4f88"
+            ]
+        ]
+    },
+    {
+        "id": "862fdaaf.6c4f88",
+        "type": "binary",
+        "z": "6022cae4.9b3254",
+        "name": "binary => json",
+        "property": "payload",
+        "pattern": "x16, b8(1:  b8 => type, x8,  b24 =>  v, b24 => i, b24 => mAh, b32 => Wh, b16 => dMinus, b16 => dPlus, x24,  b8 => h, b8 => m, b8 => s ,b8[7], b8 => CRC | 2:  b8 => type,   x32,  x8,  b8 => CRC | b8 => type, x8[40]{0} => data)",
+        "x": 320,
+        "y": 520,
+        "wires": [
+            [
+                "9a181041.29942",
+                "afebbaf5.5bc9f8"
+            ]
+        ]
+    },
+    {
+        "id": "9a181041.29942",
+        "type": "debug",
+        "z": "6022cae4.9b3254",
+        "d": true,
+        "name": "see all json",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 530,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "57d6e987.6b95d8",
+        "type": "function",
+        "z": "6022cae4.9b3254",
+        "name": "test crc",
+        "func": "var lrc= 0;\n// tentative test for crc algorytm\nfor (var i = 3; i < (msg.payload.length-2); i++) {\n lrc = ( lrc + msg.payload[i]) & 0xFF; \n//  lrc ^=  msg.payload[i];\n}\nvar y =  (((lrc ^ 0xFF) + 1) & 0xFF);\n\nvar msg1 = { payload : \" lrc=\" + lrc + \" LRC=\" + y + \" true=\" + msg.payload[msg.payload.length-1] };\nreturn [msg, msg1];",
+        "outputs": 2,
+        "noerr": 0,
+        "x": 560,
+        "y": 840,
+        "wires": [
+            [
+                "cd8ca3ee.ae732"
+            ],
+            [
+                "84388dfc.46289"
+            ]
+        ]
+    },
+    {
+        "id": "84388dfc.46289",
+        "type": "debug",
+        "z": "6022cae4.9b3254",
+        "name": "echo CRC test",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 760,
+        "y": 900,
+        "wires": []
+    },
+    {
+        "id": "e5652c2d.12aa9",
+        "type": "debug",
+        "z": "6022cae4.9b3254",
+        "name": "see data",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 780,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "792fac31.d02cc4",
+        "type": "inject",
+        "z": "6022cae4.9b3254",
+        "name": "[-]",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 90,
+        "y": 680,
+        "wires": [
+            [
+                "15b05091.7cd22f"
+            ]
+        ]
+    },
+    {
+        "id": "cd8ca3ee.ae732",
+        "type": "serial out",
+        "z": "6022cae4.9b3254",
+        "name": "TX UD18 TESTER",
+        "serial": "4092feda.8b16c",
+        "x": 770,
+        "y": 820,
+        "wires": []
+    },
+    {
+        "id": "15b05091.7cd22f",
+        "type": "function",
+        "z": "6022cae4.9b3254",
+        "name": "[-] key code",
+        "func": "// 0x03: refresh screen\n// (WHreset] = [ff 55 11 03 01 00 00 00 00 51]\n// (TimeReset) [ff 55 11 03 03 00 00 00 00 53] \n// [+] ff 55 11 03 34 00 00 00 00 0c \nmsg.payload = Buffer.from([0xff, 0x55, 0x11, 0x03, 0x34, 0x00, 0x00, 0x00, 0x00, 0x0C ]);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 290,
+        "y": 680,
+        "wires": [
+            [
+                "57d6e987.6b95d8"
+            ]
+        ]
+    },
+    {
+        "id": "c8c4e3c5.7ef1f",
+        "type": "inject",
+        "z": "6022cae4.9b3254",
+        "name": "[ENTER]",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 100,
+        "y": 800,
+        "wires": [
+            [
+                "edb09174.f1625"
+            ]
+        ]
+    },
+    {
+        "id": "edb09174.f1625",
+        "type": "function",
+        "z": "6022cae4.9b3254",
+        "name": "[ENTER] code",
+        "func": "\nmsg.payload = Buffer.from([0xff, 0x55, 0x11, 0x03, 0x32, 0x00, 0x00, 0x00, 0x00, 0x02 ]);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 300,
+        "y": 800,
+        "wires": [
+            [
+                "57d6e987.6b95d8"
+            ]
+        ]
+    },
+    {
+        "id": "3c22ac33.717554",
+        "type": "inject",
+        "z": "6022cae4.9b3254",
+        "name": "[RESET]",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 100,
+        "y": 960,
+        "wires": [
+            [
+                "60986562.b3c95c"
+            ]
+        ]
+    },
+    {
+        "id": "60986562.b3c95c",
+        "type": "function",
+        "z": "6022cae4.9b3254",
+        "name": "[RESET] key code",
+        "func": "msg.payload = Buffer.from([0xff, 0x55, 0x11, 0x03, 0x05, 0x00, 0x00, 0x00, 0x00, 0x5d ]);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 310,
+        "y": 960,
+        "wires": [
+            [
+                "57d6e987.6b95d8"
+            ]
+        ]
+    },
+    {
+        "id": "4df61223.4bf44c",
+        "type": "inject",
+        "z": "6022cae4.9b3254",
+        "name": "[Time reset]",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 110,
+        "y": 920,
+        "wires": [
+            [
+                "8fa09f46.0e5ca"
+            ]
+        ]
+    },
+    {
+        "id": "8fa09f46.0e5ca",
+        "type": "function",
+        "z": "6022cae4.9b3254",
+        "name": "[Time reset] code",
+        "func": "msg.payload = Buffer.from([0xff, 0x55, 0x11, 0x03, 0x03, 0x00, 0x00, 0x00, 0x00, 0x53 ]);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 310,
+        "y": 920,
+        "wires": [
+            [
+                "57d6e987.6b95d8"
+            ]
+        ]
+    },
+    {
+        "id": "3996aff8.46f08",
+        "type": "inject",
+        "z": "6022cae4.9b3254",
+        "name": "[Ah reset]",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 100,
+        "y": 880,
+        "wires": [
+            [
+                "efeb6ab3.ca16b8"
+            ]
+        ]
+    },
+    {
+        "id": "efeb6ab3.ca16b8",
+        "type": "function",
+        "z": "6022cae4.9b3254",
+        "name": "[Ah reset] code",
+        "func": "msg.payload = Buffer.from([0xff, 0x55, 0x11, 0x03, 0x02, 0x00, 0x00, 0x00, 0x00, 0x52 ]);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 300,
+        "y": 880,
+        "wires": [
+            [
+                "57d6e987.6b95d8"
+            ]
+        ]
+    },
+    {
+        "id": "395491df.192a9e",
+        "type": "inject",
+        "z": "6022cae4.9b3254",
+        "name": "[Wh reset]",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 100,
+        "y": 840,
+        "wires": [
+            [
+                "1e11f392.3eb55c"
+            ]
+        ]
+    },
+    {
+        "id": "1e11f392.3eb55c",
+        "type": "function",
+        "z": "6022cae4.9b3254",
+        "name": "[Wh rewset] code",
+        "func": "msg.payload = Buffer.from([0xff, 0x55, 0x11, 0x03, 0x01, 0x00, 0x00, 0x00, 0x00, 0x51 ]);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 310,
+        "y": 840,
+        "wires": [
+            [
+                "57d6e987.6b95d8"
+            ]
+        ]
+    },
+    {
+        "id": "b439e927.44f7a8",
+        "type": "inject",
+        "z": "6022cae4.9b3254",
+        "name": "[setup]",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 90,
+        "y": 760,
+        "wires": [
+            [
+                "9e79ea69.04d1d8"
+            ]
+        ]
+    },
+    {
+        "id": "9e79ea69.04d1d8",
+        "type": "function",
+        "z": "6022cae4.9b3254",
+        "name": "[setup] code",
+        "func": "\nmsg.payload = Buffer.from([0xff, 0x55, 0x11, 0x03, 0x31, 0x00, 0x00, 0x00, 0x00, 0x01 ]);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 290,
+        "y": 760,
+        "wires": [
+            [
+                "57d6e987.6b95d8"
+            ]
+        ]
+    },
+    {
+        "id": "4bb045e.f1691bc",
+        "type": "inject",
+        "z": "6022cae4.9b3254",
+        "name": "[+]",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 90,
+        "y": 720,
+        "wires": [
+            [
+                "29c36166.d9c0fe"
+            ]
+        ]
+    },
+    {
+        "id": "29c36166.d9c0fe",
+        "type": "function",
+        "z": "6022cae4.9b3254",
+        "name": "[+] key code",
+        "func": "msg.payload = Buffer.from([0xff, 0x55, 0x11, 0x03, 0x33, 0x00, 0x00, 0x00, 0x00, 0x03 ]);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 290,
+        "y": 720,
+        "wires": [
+            [
+                "57d6e987.6b95d8"
+            ]
+        ]
+    },
+    {
+        "id": "afebbaf5.5bc9f8",
+        "type": "function",
+        "z": "6022cae4.9b3254",
+        "name": "json => screen",
+        "func": "// processes only data messages\nif (msg.payload.type == 1){\nvar msgV  = { payload: (msg.payload.v / 100)+\" V\", topic: 'V'};\nvar msgI  = { payload: (msg.payload.i / 100)+\" A\", topic: 'I'};\nvar msgA  = { payload: (msg.payload.mAh)+\" mAh\", topic: 'mAh'};\nvar msgW  = { payload: (msg.payload.Wh /100)+\" Wh\", topic: 'Wh'};\nvar msgdM = { payload: (msg.payload.dMinus / 100)+\" V\", topic: 'dMinus'};\nvar msgdP = { payload: (msg.payload.dPlus / 100)+\" V\", topic: 'dPlus'};\nvar msgT  = { payload: msg.payload.h +\":\"+ (msg.payload.m < 10? \"0\"+msg.payload.m:msg.payload.m) +\":\"+(msg.payload.s < 10? \"0\"+msg.payload.s:msg.payload.s), topic: 'time'};\nvar msgs  = { payload: (msg.payload.h *60 +  msg.payload.m)*60 + msg.payload.s, topic: 'sec'};\nreturn [msgV, msgI, msgA, msgW, msgdM, msgdP, msgT, msgs];\n}\nreturn[];",
+        "outputs": 8,
+        "noerr": 0,
+        "x": 540,
+        "y": 520,
+        "wires": [
+            [
+                "e5652c2d.12aa9"
+            ],
+            [
+                "e5652c2d.12aa9"
+            ],
+            [
+                "e5652c2d.12aa9"
+            ],
+            [
+                "e5652c2d.12aa9"
+            ],
+            [
+                "e5652c2d.12aa9"
+            ],
+            [
+                "e5652c2d.12aa9"
+            ],
+            [
+                "e5652c2d.12aa9"
+            ],
+            [
+                "e5652c2d.12aa9"
+            ]
+        ]
+    },
+    {
+        "id": "638ae051.6e877",
+        "type": "comment",
+        "z": "6022cae4.9b3254",
+        "name": "UD18 RX data",
+        "info": "",
+        "x": 90,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "e7eadecb.d35a7",
+        "type": "comment",
+        "z": "6022cae4.9b3254",
+        "name": "UD18 TX commands",
+        "info": "",
+        "x": 110,
+        "y": 620,
+        "wires": []
+    },
+    {
+        "id": "4092feda.8b16c",
+        "type": "serial-port",
+        "z": "",
+        "serialport": "COM11",
+        "serialbaud": "115200",
+        "databits": "8",
+        "parity": "none",
+        "stopbits": "1",
+        "waitfor": "0xff",
+        "dtr": "none",
+        "rts": "none",
+        "cts": "none",
+        "dsr": "none",
+        "newline": "36",
+        "bin": "bin",
+        "out": "count",
+        "addchar": "",
+        "responsetimeout": "10000"
+    }
+]
