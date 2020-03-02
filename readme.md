@@ -19,7 +19,7 @@ Furthermore:
 
 UD18 as also the optional capability to cut off the charge (FCOP) when some trigger conditions are meets.
 
-UD18 can communicate via Bluetooth and two applications can be downloaded, one for PC and another App for smartphone. 
+UD18 can communicate via Bluetooth and two applications can be downloaded, one for WIN-PC and another App for smartphone. 
 
 ![The UD18 test flow](images/2020-03-01.161247.shot.png)
 
