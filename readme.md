@@ -11,7 +11,7 @@ The measures that UD18 can carry out are:
 
 Furthermore:
 
-- Time: 0...999 ore 
+- Time: 0...999 h
 - Capacity: 0...99999 mAh (cumulative)
 - Charge: 0...999.99 Wh (cumulative)
 - USB-data+: 0...2,99 V
