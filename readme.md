@@ -1,4 +1,6 @@
-This low price device (13.88 €) is more than just a digital USB tester (see ATORCH UD18: [https://it.aliexpress.com/item/4000001021645.html](https://it.aliexpress.com/item/4000001021645.html) or [https://www.banggood.com/UD18-USB3_0DCType-C-18-in-1-USB-Tester-APP-DC-Digital-Voltmeter-Ammeter-HD-Color-Screen-6-Bit-High-Precision-Display-UD18-Bluetooth-Digital-Meter-p-1564949.html](https://www.banggood.com/UD18-USB3_0DCType-C-18-in-1-USB-Tester-APP-DC-Digital-Voltmeter-Ammeter-HD-Color-Screen-6-Bit-High-Precision-Display-UD18-Bluetooth-Digital-Meter-p-1564949.html) ).
+This low price device (13.88 €) is more than just a digital USB tester. See ATORCH UD18: 
+- Aliexpress: [https://it.aliexpress.com/item/4000001021645.html](https://it.aliexpress.com/item/4000001021645.html)
+- Banggood: [https://www.banggood.com/UD18-USB3_0DCType-C-18-in-1-USB-Tester-APP-DC-Digital-Voltmeter-Ammeter-HD-Color-Screen-6-Bit-High-Precision-Display-UD18-Bluetooth-Digital-Meter-p-1564949.html](https://www.banggood.com/UD18-USB3_0DCType-C-18-in-1-USB-Tester-APP-DC-Digital-Voltmeter-Ammeter-HD-Color-Screen-6-Bit-High-Precision-Display-UD18-Bluetooth-Digital-Meter-p-1564949.html) 
 
 ![UD18 photo ](images/fig001.jpg)
 
@@ -19,7 +21,7 @@ Furthermore:
 
 UD18 as also the optional capability to cut off the charge (FCOP) when some trigger conditions are meets.
 
-UD18 can communicate via Bluetooth and two applications can be downloaded, one for WIN-PC and another App for smartphone. 
+UD18 can communicate via Bluetooth and two applications can be downloaded, one for WIN-PC and another App for smartphone (Android and iPhone). 
 
 ![The UD18 test flow](images/2020-03-01.161247.shot.png)
 
