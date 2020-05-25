@@ -2,8 +2,9 @@
 
 This low price device (13.88 EUR) is more than just a digital USB tester. See ATORCH UD18:
 
-- Aliexpress: <https://it.aliexpress.com/item/4000001021645.html>
+- Aliexpress: <https://www.aliexpress.com/item/4000001021645.html>
 - Banggood: <https://banggood.app.link/BbTma8WFL6>
+- Taobao: <https://detail.tmall.com/item.htm?id=597691329775>
 
 ![UD18 photo ](images/fig001.jpg)
 
