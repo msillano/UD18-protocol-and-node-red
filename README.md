@@ -10,18 +10,22 @@ This low price device (13.88 EUR) is more than just a digital USB tester. See AT
 
 The measures that UD18 can carry out are:
 
-- Tension: 3.6...32 V
-- Current: 0...5.1 A
-- Power: 0...163.99 W
-- Equivalent resistance: 0...999.99 Ω
+| Property              | Value             |
+| --------------------- | ----------------- |
+| Tension               | 3.6 ~ 32 Voltage  |
+| Current               | 0.0 ~ 5.1 Amp     |
+| Power                 | 0.0 ~ 163.99 Watt |
+| Equivalent resistance | 0.0 ~ 999.99 Ohm  |
 
 Furthermore:
 
-- Time: 0...999 h
-- Capacity: 0...99999 mAh (cumulative)
-- Charge: 0...999.99 Wh (cumulative)
-- USB-data+: 0...2,99 V
-- USB-data-: 0...2.99 V
+| Property   | Value                        |
+| ---------- | ---------------------------- |
+| Time       | 0.0 ~ 999 hour               |
+| Capacity   | 0.0 ~ 99999 mAh (cumulative) |
+| Charge     | 0.0 ~ 999.99 Wh (cumulative) |
+| USB-data + | 0.0 ~ 2.99 V                 |
+| USB-data - | 0.0 ~ 2.99 V                 |
 
 UD18 as also the optional capability to cut off the charge (FCOP) when some trigger conditions are meets.
 
@@ -29,9 +33,9 @@ UD18 can communicate via Bluetooth and two applications can be downloaded, one f
 
 ![The UD18 Test flow](images/2020-03-01.161247.shot.png)
 
-To use UD18 in **node-red** custom integrate projects we need:
+To use UD18 in [node-red](https://nodered.org) custom integrate projects we need:
 
 - the _communication protocol_ used by the device (see [UD18_protocol.txt](UD18_protocol.txt))
-- [node-red](https://nodered.org) nodes to _code+send_ commands and _receive+decode_ data (see [UD18flow.json](UD18flow.json)).
+- **node-red** nodes to _code+send_ commands and _receive+decode_ data (see [UD18flow.json](UD18flow.json)).
 
 For the full story see [UD18_01_en.pdf](UD18_01_en.pdf) (in italiano: [UD18_01_it.pdf](UD18_01_en.pdf)).
