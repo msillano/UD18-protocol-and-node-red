@@ -6,7 +6,7 @@ This low price device (13.88 EUR) is more than just a digital USB tester. See AT
 - Banggood: <https://banggood.app.link/BbTma8WFL6>
 - Taobao: <https://detail.tmall.com/item.htm?id=597691329775>
 
-![UD18 photo ](images/fig001.jpg)
+![UD18 Product](images/fig001.jpg)
 
 The measures that UD18 can carry out are:
 
@@ -27,7 +27,7 @@ UD18 as also the optional capability to cut off the charge (FCOP) when some trig
 
 UD18 can communicate via Bluetooth and two applications can be downloaded, one for Windows PC and another App for smartphone (Android and iPhone).
 
-![The UD18 test flow](images/2020-03-01.161247.shot.png)
+![The UD18 Test flow](images/2020-03-01.161247.shot.png)
 
 To use UD18 in **node-red** custom integrate projects we need:
 
