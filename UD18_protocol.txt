@@ -26,48 +26,49 @@ Offset(h) 00 01 02 03 04 05 06 07 08 09 0A 0B 0C 0D 0E 0F
 00000100  00 00 00 4E
 
 ==============  data map (big endien)
-0000	FF
-0001	55
-0002	01  type: 01: data, 0x11: command, 02: ack-command
-0003	03  ??
 
-0004	00	V
-0005	00	V
-0006	00	V, as INT24, /100
+0000    FF
+0001    55
+0002    01  type: 01: data, 0x11: command, 02: ack-command
+0003    03  ??
 
-0007	00	I
-0008	00	I
-0009	00	I, as INT24, /100
+0004    00  V
+0005    00  V
+0006    00  V, as INT24, /100
 
-000A	00	mAh
-000B	00	mAh
-000C	00	mAh, as INT24,
+0007    00  I
+0008    00  I
+0009    00  I, as INT24, /100
 
-000D	00	Wh
-000E	00	Wh
-000F	00	Wh
-0010	00	Wh, as INT32, /100
+000A    00  mAh
+000B    00  mAh
+000C    00  mAh, as INT24,
 
-0011    00	D-
-0012	07	D- as INT16, /100
+000D    00  Wh
+000E    00  Wh
+000F    00  Wh
+0010    00  Wh, as INT32, /100
+
+0011    00  D-
+0012    07  D- as INT16, /100
 
 0013    00  D+
-0014	0A	D+ as INT16, /100
+0014    0A  D+ as INT16, /100
 
-0015	00
-0016	00
-0017	00
+0015    00
+0016    00
+0017    00
 
-0018	12	t-h, as BYTE, hour
-0019    2E	t-m, as BYTE, min
-001A	33	t-s, as BYTE, sec.
+0018    12  t-h, as BYTE, hour
+0019    2E  t-m, as BYTE, min
+001A    33  t-s, as BYTE, sec.
 
-001B	3C
-001C	00
-001D	00
-001E	00
-001F	00
-0020	00
-0021	00
-0022	00
-0023	4E	CRC ?? checksum algorithm ()
+001B    3C
+001C    00
+001D    00
+001E    00
+001F    00
+0020    00
+0021    00
+0022    00
+0023    4E  https://github.com/msillano/UD18-protocol-and-node-red/issues/2
